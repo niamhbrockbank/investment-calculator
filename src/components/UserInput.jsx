@@ -1,13 +1,17 @@
-import InputGroup from "./InputGroup";
+import Input from "./Input";
 
 export default function UserInput() {
   const name = "Niamh";
   return (
     <section id="user-input">
-      <InputGroup label="Initial Investment" />
-      <InputGroup label="Annual Investment" />
-      <InputGroup label="Expected Return" />
-      <InputGroup label="Duration" />
+      <span className="input-group">
+        <Input label="Initial Investment" />
+        <Input label="Annual Investment" />
+      </span>
+      <span className="input-group">
+        <Input label="Expected Return" />
+        <Input label="Duration" />
+      </span>
     </section>
   );
 }
