@@ -4,7 +4,10 @@ export default function UserInput() {
   const name = "Niamh";
   return (
     <section id="user-input">
-      <InputGroup title={name} />
+      <InputGroup label="Initial Investment" />
+      <InputGroup label="Annual Investment" />
+      <InputGroup label="Expected Return" />
+      <InputGroup label="Duration" />
     </section>
   );
 }

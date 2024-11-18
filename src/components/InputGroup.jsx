@@ -1,8 +1,8 @@
-export default function InputGroup({ title, ...props }) {
+export default function InputGroup({ label, type = "text", ...props }) {
   return (
     <div className="input-group">
-      <h1>{title}</h1>
-      <input {...props}></input>
+      <label>{label}</label>
+      <input label={label} type={type} {...props}></input>
     </div>
   );
 }
