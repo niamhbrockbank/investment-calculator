@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Header from "./components/Header";
+import InvestmentTable from "./components/InvestmentTable";
 import UserInput from "./components/UserInput";
 
 const INITIAL_INPUT_VALUES = {
