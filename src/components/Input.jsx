@@ -21,7 +21,7 @@ export default function Input({
   }
 
   return (
-    <span>
+    <p>
       <label htmlFor={id}>{label}</label>
       <input
         id={id}
@@ -31,6 +31,6 @@ export default function Input({
         value={inputValue}
         {...props}
       />
-    </span>
+    </p>
   );
 }

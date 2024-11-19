@@ -3,7 +3,7 @@ import Input from "./Input";
 export default function UserInput({ inputState, setInputState }) {
   return (
     <section id="user-input">
-      <span className="input-group">
+      <div className="input-group">
         <Input
           label="Initial Investment"
           id="initialInvestment"
@@ -16,8 +16,8 @@ export default function UserInput({ inputState, setInputState }) {
           inputState={inputState}
           setInputState={setInputState}
         />
-      </span>
-      <span className="input-group">
+      </div>
+      <div className="input-group">
         <Input
           label="Expected Return"
           id="expectedReturn"
@@ -30,7 +30,7 @@ export default function UserInput({ inputState, setInputState }) {
           inputState={inputState}
           setInputState={setInputState}
         />
-      </span>
+      </div>
     </section>
   );
 }
