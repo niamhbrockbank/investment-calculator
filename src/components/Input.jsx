@@ -29,6 +29,7 @@ export default function Input({
         onChange={(e) => handleChange(e)}
         onBlur={handleUnFocus}
         value={inputValue}
+        required
         {...props}
       />
     </p>
