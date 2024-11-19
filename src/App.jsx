@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "./components/Header";
-import InvestmentTable from "./components/InvestmentTable";
+import ResultTable from "./components/ResultTable";
 import UserInput from "./components/UserInput";
 
 const INITIAL_INPUT_VALUES = {
@@ -16,7 +16,7 @@ function App() {
     <main>
       <Header />
       <UserInput inputState={inputValues} setInputState={setInputValues} />
-      <InvestmentTable inputValues={inputValues} />
+      <ResultTable inputValues={inputValues} />
     </main>
   );
 }
