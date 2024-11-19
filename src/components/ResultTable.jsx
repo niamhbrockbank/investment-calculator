@@ -10,8 +10,13 @@ export default function ResultTable({ input }) {
   }
 
   let investmentResults = [];
+  let initialInvestment;
   if (!showWarning) {
     investmentResults = calculateInvestmentResults(input);
+    initialInvestment =
+      investmentResults[0].valueEndOfYear -
+      investmentResults[0].interest -
+      investmentResults[0].annualInvestment;
   }
 
   const tableHeaders = [
@@ -24,14 +29,16 @@ export default function ResultTable({ input }) {
 
   const tableRows = investmentResults.map(
     ({ year, interest, valueEndOfYear, annualInvestment }) => {
-      const investedCapital = valueEndOfYear - annualInvestment * year;
+      const totalInterest =
+        valueEndOfYear - annualInvestment * year - initialInvestment;
+      const totalAmountInvested = valueEndOfYear - totalInterest;
       return (
         <tr key={year}>
           <td>{year}</td>
           <td>{formatter.format(valueEndOfYear)}</td>
           <td>{formatter.format(interest)}</td>
-          <td>{formatter.format(annualInvestment)}</td>
-          <td>{formatter.format(investedCapital)}</td>
+          <td>{formatter.format(totalInterest)}</td>
+          <td>{formatter.format(totalAmountInvested)}</td>
         </tr>
       );
     }
