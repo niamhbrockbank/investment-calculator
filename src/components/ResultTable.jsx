@@ -1,7 +1,18 @@
 import { calculateInvestmentResults, formatter } from "../util/investment";
 
 export default function ResultTable({ inputValues, ...props }) {
-  const investmentResults = calculateInvestmentResults(inputValues);
+  let showWarning = false;
+
+  for (const key in inputValues) {
+    if (inputValues[key] < 1) {
+      showWarning = true;
+    }
+  }
+
+  let investmentResults = [];
+  if (!showWarning) {
+    investmentResults = calculateInvestmentResults(inputValues);
+  }
 
   const tableHeaders = [
     "Year",
@@ -24,15 +35,20 @@ export default function ResultTable({ inputValues, ...props }) {
   );
 
   return (
-    <table id="result">
-      <thead>
-        <tr>
-          {tableHeaders.map((h) => (
-            <th key={h}>{h}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>{tableRows}</tbody>
-    </table>
+    <>
+      {showWarning && (
+        <div className="center">All inputs must be greater than zero!</div>
+      )}
+      <table id="result">
+        <thead>
+          <tr>
+            {tableHeaders.map((h) => (
+              <th key={h}>{h}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>{tableRows}</tbody>
+      </table>
+    </>
   );
 }

@@ -14,6 +14,12 @@ export default function Input({
     setInputValue(event.target.value);
   }
 
+  function handleUnFocus() {
+    setInputState((prevState) => {
+      return { ...prevState, [id]: parseFloat(inputValue) };
+    });
+  }
+
   return (
     <span>
       <label htmlFor={id}>{label}</label>
@@ -21,11 +27,7 @@ export default function Input({
         id={id}
         type={type}
         onChange={(e) => handleChange(e)}
-        onBlur={() =>
-          setInputState((prevState) => {
-            return { ...prevState, [id]: parseFloat(inputValue) };
-          })
-        }
+        onBlur={handleUnFocus}
         value={inputValue}
         {...props}
       />
