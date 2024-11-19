@@ -16,7 +16,7 @@ export default function Input({
 
   function handleUnFocus() {
     setInputState((prevState) => {
-      return { ...prevState, [inputIdentifier]: parseFloat(inputValue) };
+      return { ...prevState, [inputIdentifier]: +inputValue };
     });
   }
 
