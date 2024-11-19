@@ -4,19 +4,26 @@ import ResultTable from "./components/ResultTable";
 import UserInput from "./components/UserInput";
 
 const INITIAL_INPUT_VALUES = {
-  initialInvestment: 0,
-  annualInvestment: 0,
-  expectedReturn: 0,
-  duration: 0,
+  initialInvestment: 1000,
+  annualInvestment: 1200,
+  expectedReturn: 6,
+  duration: 10,
 };
 
 function App() {
-  const [inputValues, setInputValues] = useState(INITIAL_INPUT_VALUES);
+  const [userInput, setUserInput] = useState(INITIAL_INPUT_VALUES);
+
+  const inputIsValid = userInput.duration > 0;
+
   return (
     <main>
       <Header />
-      <UserInput inputState={inputValues} setInputState={setInputValues} />
-      <ResultTable inputValues={inputValues} />
+      <UserInput userInput={userInput} setUserInput={setUserInput} />
+      {inputIsValid ? (
+        <ResultTable input={userInput} />
+      ) : (
+        <p className="center">Duration must be greater than zero!</p>
+      )}
     </main>
   );
 }

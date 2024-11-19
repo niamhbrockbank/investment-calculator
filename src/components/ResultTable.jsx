@@ -1,18 +1,11 @@
 import { calculateInvestmentResults, formatter } from "../util/investment";
 
-export default function ResultTable({ inputValues, ...props }) {
-  let showWarning = false;
-
-  for (const key in inputValues) {
-    if (inputValues[key] < 1) {
-      showWarning = true;
-    }
-  }
-
-  let investmentResults = [];
-  if (!showWarning) {
-    investmentResults = calculateInvestmentResults(inputValues);
-  }
+export default function ResultTable({ input, inputIsValid }) {
+  const investmentResults = calculateInvestmentResults(input);
+  const initialInvestment =
+    investmentResults[0].valueEndOfYear -
+    investmentResults[0].interest -
+    investmentResults[0].annualInvestment;
 
   const tableHeaders = [
     "Year",
@@ -23,22 +16,24 @@ export default function ResultTable({ inputValues, ...props }) {
   ];
 
   const tableRows = investmentResults.map(
-    ({ year, interest, valueEndOfYear, annualInvestment }) => (
-      <tr key={year}>
-        <td>{year}</td>
-        <td>{formatter.format(valueEndOfYear)}</td>
-        <td>{formatter.format(interest)}</td>
-        <td>{formatter.format(annualInvestment)}</td>
-        <td>{formatter.format(valueEndOfYear - annualInvestment)}</td>
-      </tr>
-    )
+    ({ year, interest, valueEndOfYear, annualInvestment }) => {
+      const totalInterest =
+        valueEndOfYear - annualInvestment * year - initialInvestment;
+      const totalAmountInvested = valueEndOfYear - totalInterest;
+      return (
+        <tr key={year}>
+          <td>{year}</td>
+          <td>{formatter.format(valueEndOfYear)}</td>
+          <td>{formatter.format(interest)}</td>
+          <td>{formatter.format(totalInterest)}</td>
+          <td>{formatter.format(totalAmountInvested)}</td>
+        </tr>
+      );
+    }
   );
 
   return (
     <>
-      {showWarning && (
-        <div className="center">All inputs must be greater than zero!</div>
-      )}
       <table id="result">
         <thead>
           <tr>
