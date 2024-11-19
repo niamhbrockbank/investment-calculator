@@ -1,34 +1,34 @@
 import Input from "./Input";
 
-export default function UserInput({ inputState, setInputState }) {
+export default function UserInput({ userInput, setUserInput }) {
   return (
     <section id="user-input">
       <div className="input-group">
         <Input
           label="Initial Investment"
           id="initialInvestment"
-          inputState={inputState}
-          setInputState={setInputState}
+          inputState={userInput}
+          setInputState={setUserInput}
         />
         <Input
           label="Annual Investment"
           id="annualInvestment"
-          inputState={inputState}
-          setInputState={setInputState}
+          inputState={userInput}
+          setInputState={setUserInput}
         />
       </div>
       <div className="input-group">
         <Input
           label="Expected Return"
           id="expectedReturn"
-          inputState={inputState}
-          setInputState={setInputState}
+          inputState={userInput}
+          setInputState={setUserInput}
         />
         <Input
           label="Duration"
           id="duration"
-          inputState={inputState}
-          setInputState={setInputState}
+          inputState={userInput}
+          setInputState={setUserInput}
         />
       </div>
     </section>

@@ -11,12 +11,12 @@ const INITIAL_INPUT_VALUES = {
 };
 
 function App() {
-  const [inputValues, setInputValues] = useState(INITIAL_INPUT_VALUES);
+  const [userInput, setUserInput] = useState(INITIAL_INPUT_VALUES);
   return (
     <main>
       <Header />
-      <UserInput inputState={inputValues} setInputState={setInputValues} />
-      <ResultTable inputValues={inputValues} />
+      <UserInput userInput={userInput} setUserInput={setUserInput} />
+      <ResultTable inputValues={userInput} />
     </main>
   );
 }
