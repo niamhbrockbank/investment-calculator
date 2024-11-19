@@ -5,10 +5,10 @@ export default function Input({
   type = "number",
   inputState,
   setInputState,
-  id,
+  inputIdentifier,
   ...props
 }) {
-  const [inputValue, setInputValue] = useState(inputState[id]);
+  const [inputValue, setInputValue] = useState(inputState[inputIdentifier]);
 
   function handleChange(event) {
     setInputValue(event.target.value);
@@ -16,15 +16,15 @@ export default function Input({
 
   function handleUnFocus() {
     setInputState((prevState) => {
-      return { ...prevState, [id]: parseFloat(inputValue) };
+      return { ...prevState, [inputIdentifier]: parseFloat(inputValue) };
     });
   }
 
   return (
     <p>
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={inputIdentifier}>{label}</label>
       <input
-        id={id}
+        id={inputIdentifier}
         type={type}
         onChange={(e) => handleChange(e)}
         onBlur={handleUnFocus}

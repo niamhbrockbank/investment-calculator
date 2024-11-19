@@ -6,13 +6,13 @@ export default function UserInput({ userInput, setUserInput }) {
       <div className="input-group">
         <Input
           label="Initial Investment"
-          id="initialInvestment"
+          inputIdentifier="initialInvestment"
           inputState={userInput}
           setInputState={setUserInput}
         />
         <Input
           label="Annual Investment"
-          id="annualInvestment"
+          inputIdentifier="annualInvestment"
           inputState={userInput}
           setInputState={setUserInput}
         />
@@ -20,13 +20,13 @@ export default function UserInput({ userInput, setUserInput }) {
       <div className="input-group">
         <Input
           label="Expected Return"
-          id="expectedReturn"
+          inputIdentifier="expectedReturn"
           inputState={userInput}
           setInputState={setUserInput}
         />
         <Input
           label="Duration"
-          id="duration"
+          inputIdentifier="duration"
           inputState={userInput}
           setInputState={setUserInput}
         />
