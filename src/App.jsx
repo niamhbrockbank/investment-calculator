@@ -16,7 +16,7 @@ function App() {
     <main>
       <Header />
       <UserInput userInput={userInput} setUserInput={setUserInput} />
-      <ResultTable inputValues={userInput} />
+      <ResultTable input={userInput} />
     </main>
   );
 }

@@ -1,17 +1,17 @@
 import { calculateInvestmentResults, formatter } from "../util/investment";
 
-export default function ResultTable({ inputValues, ...props }) {
+export default function ResultTable({ input }) {
   let showWarning = false;
 
-  for (const key in inputValues) {
-    if (inputValues[key] < 1) {
+  for (const key in input) {
+    if (input[key] < 1) {
       showWarning = true;
     }
   }
 
   let investmentResults = [];
   if (!showWarning) {
-    investmentResults = calculateInvestmentResults(inputValues);
+    investmentResults = calculateInvestmentResults(input);
   }
 
   const tableHeaders = [
