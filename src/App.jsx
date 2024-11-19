@@ -12,11 +12,18 @@ const INITIAL_INPUT_VALUES = {
 
 function App() {
   const [userInput, setUserInput] = useState(INITIAL_INPUT_VALUES);
+
+  const inputIsValid = userInput.duration > 0;
+
   return (
     <main>
       <Header />
       <UserInput userInput={userInput} setUserInput={setUserInput} />
-      <ResultTable input={userInput} />
+      {inputIsValid ? (
+        <ResultTable input={userInput} />
+      ) : (
+        <p className="center">Duration must be greater than zero!</p>
+      )}
     </main>
   );
 }

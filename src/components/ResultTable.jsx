@@ -1,23 +1,11 @@
 import { calculateInvestmentResults, formatter } from "../util/investment";
 
-export default function ResultTable({ input }) {
-  let showWarning = false;
-
-  for (const key in input) {
-    if (input[key] < 1) {
-      showWarning = true;
-    }
-  }
-
-  let investmentResults = [];
-  let initialInvestment;
-  if (!showWarning) {
-    investmentResults = calculateInvestmentResults(input);
-    initialInvestment =
-      investmentResults[0].valueEndOfYear -
-      investmentResults[0].interest -
-      investmentResults[0].annualInvestment;
-  }
+export default function ResultTable({ input, inputIsValid }) {
+  const investmentResults = calculateInvestmentResults(input);
+  const initialInvestment =
+    investmentResults[0].valueEndOfYear -
+    investmentResults[0].interest -
+    investmentResults[0].annualInvestment;
 
   const tableHeaders = [
     "Year",
@@ -46,9 +34,6 @@ export default function ResultTable({ input }) {
 
   return (
     <>
-      {showWarning && (
-        <div className="center">All inputs must be greater than zero!</div>
-      )}
       <table id="result">
         <thead>
           <tr>
