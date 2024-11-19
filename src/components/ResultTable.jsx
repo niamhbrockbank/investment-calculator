@@ -23,15 +23,18 @@ export default function ResultTable({ input }) {
   ];
 
   const tableRows = investmentResults.map(
-    ({ year, interest, valueEndOfYear, annualInvestment }) => (
-      <tr key={year}>
-        <td>{year}</td>
-        <td>{formatter.format(valueEndOfYear)}</td>
-        <td>{formatter.format(interest)}</td>
-        <td>{formatter.format(annualInvestment)}</td>
-        <td>{formatter.format(valueEndOfYear - annualInvestment)}</td>
-      </tr>
-    )
+    ({ year, interest, valueEndOfYear, annualInvestment }) => {
+      const investedCapital = valueEndOfYear - annualInvestment * year;
+      return (
+        <tr key={year}>
+          <td>{year}</td>
+          <td>{formatter.format(valueEndOfYear)}</td>
+          <td>{formatter.format(interest)}</td>
+          <td>{formatter.format(annualInvestment)}</td>
+          <td>{formatter.format(investedCapital)}</td>
+        </tr>
+      );
+    }
   );
 
   return (
